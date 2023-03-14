@@ -107,3 +107,12 @@ body {
     box-shadow: 0 0 10px #ffc0cb;
   }
   
+  select{
+    color: #ffc0cb;
+    background-color:#0e0e16;
+    border: 2px solid #a1c3d1;
+  }
+  select:hover{
+    box-shadow: 0 0 10px #ffc0cb;
+  }
+  

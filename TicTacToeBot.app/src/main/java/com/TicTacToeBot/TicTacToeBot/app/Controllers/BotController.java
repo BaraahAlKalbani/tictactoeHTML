@@ -29,7 +29,13 @@ public class BotController {
      * @return A BotMoveResponse object representing the bot's move.
      */
     @PostMapping("/make-move")
-    public BotMoveResponse makeMove(@RequestBody Board board) {
+    public BotMoveResponse makeHardBotMove(@RequestBody Board board) {
+        int botIndex = BotService.getRandomBotIndex(board.getBoard());
+        BotMoveResponse response = new BotMoveResponse(botIndex);
+        return response;
+    }
+    @PostMapping("/make-move/hard")
+    public BotMoveResponse makeEasyBotMove(@RequestBody Board board) {
         int botIndex = BotService.getBestBotIndex(board.getBoard());
         BotMoveResponse response = new BotMoveResponse(botIndex);
         return response;

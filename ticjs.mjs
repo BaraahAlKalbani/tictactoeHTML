@@ -3,13 +3,32 @@ let board = ['', '', '', '', '', '', '', '', '']; // an array representing the g
 let currentPlayer = 'X'; // a variable to keep track of the current player
 let gameover = false; // a boolean variable to keep track of whether the game is over
 let player2Bot = false;
+let selectedBotDifficulty = "easy";
 
 const playingMode = document.getElementById('playMode');
 const vsBot = document.getElementById('bot');
-vsBot.addEventListener('click', setBotAsPlayer2);
+const botDifficulty = document.getElementById("botDifficulty");
 
+vsBot.addEventListener('click',() => {
+  setBotAsPlayer2();
+  
+  if(player2Bot==true)
+  {
+    botDifficulty.style.display = "block";
+  }
+  else{
+    botDifficulty.style.display = "none";
+  }
+});
+
+botDifficulty.addEventListener("change",() =>{
+  setBotAsPlayer2();
+  selectedBotDifficulty = selectedBotDifficulty=== "easy" ? "hard":"easy";
+  console.log(selectedBotDifficulty);
+});
 // Function to handle cell click events
 function handleCellClick(event) {
+  
     const cell = event.target; // get the clicked cell
     const index = cell.id; // get the index of the clicked cell
     console.log(currentPlayer+" Move Index:"+index);
@@ -39,7 +58,9 @@ function handleCellClick(event) {
       if (player2Bot && currentPlayer=='O') {   
         setTimeout(() => {
           let url = `http://localhost:8080/api/bot/make-move`;
-        
+          if(selectedBotDifficulty=="hard"){
+            url = `http://localhost:8080/api/bot/make-move/hard`;
+          }
           let reqConfig = {
             method: "POST",
             headers: {

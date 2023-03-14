@@ -17,7 +17,7 @@ public class BotService {
      * @param board The current state of the Tic Tac Toe board.
      * @return An integer representing the bot's move index.
      */
-    private int getRandomBotIndex(String[] board) {
+    public static int getRandomBotIndex(String[] board) {
         // Implement your bot logic here to generate a random bot index
         // based on the current state of the board
         Random random = new Random();
