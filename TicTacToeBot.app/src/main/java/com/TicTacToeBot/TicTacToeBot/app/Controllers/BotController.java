@@ -4,14 +4,9 @@ package com.TicTacToeBot.TicTacToeBot.app.Controllers;
 import com.TicTacToeBot.TicTacToeBot.app.Models.Board;
 import com.TicTacToeBot.TicTacToeBot.app.Models.BotMoveResponse;
 import com.TicTacToeBot.TicTacToeBot.app.Service.BotService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 /**
  * Controller class for a Tic Tac Toe bot.
  */
@@ -40,5 +35,6 @@ public class BotController {
         BotMoveResponse response = new BotMoveResponse(botIndex);
         return response;
     }
+
 }
 

@@ -14,7 +14,6 @@ public class Board {
 
     /**
      * Gets the current state of the Tic-Tac-Toe board.
-     *
      * @return the current state of the Tic-Tac-Toe board
      */
     public String[] getBoard() {
@@ -23,7 +22,6 @@ public class Board {
 
     /**
      * Sets the state of the Tic-Tac-Toe board.
-     *
      * @param board the new state of the Tic-Tac-Toe board
      */
     public void setBoard(String[] board) {
