@@ -1,3 +1,15 @@
+@media (max-width: 768px) {
+  .board {
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  }
+  
+  .cell {
+  width: 80px;
+  height: 80px;
+  font-size: 4rem;
+  }  
+}
 body {
     background-color: #0e0e16;
     font-family: "Lucida Console", Monaco, monospace;
@@ -15,9 +27,18 @@ body {
   h1 {
     text-align: center;
     font-size: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: #ffc0cb;
+  }
+
   
   .board {
     display: grid;
@@ -38,23 +59,17 @@ body {
     background-color: #0e0e16;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    
   }
   
   .cell:hover {
     background-color: #1b2430;
+    box-shadow: 0 0 15px #ffc0cb;
   }
   
   .cell:active {
-    background-color: #3f51b5;
-    color: #fff;
-  }
-  
-  .cell.x {
-    color: #00ffff;
-  }
-  
-  .cell.o {
-    color: #ff00ff;
+    background-color: #ffc0cb;
+    border-color: #ffc0cb;
   }
   
   #message {
@@ -62,6 +77,8 @@ body {
     margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 1.5rem;
+    color: #ffc0cb;
+
   }
   
   .button-container {
@@ -74,18 +91,28 @@ body {
     margin: 0 10px; /* Optional: add some space between the buttons */
   }
   button {
-    margin-top: 2rem;
-    padding: 1rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
     border-radius: 5px;
     background-color: #a1c3d1;
     color: #0e0e16;
-    font-weight: bold;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   button:hover {
     background-color: #0e0e16;
     color: #a1c3d1;
+    box-shadow: 0 0 10px #ffc0cb;
+  }
+  
+  select{
+    color: #ffc0cb;
+    background-color:#0e0e16;
+    border: 2px solid #a1c3d1;
+  }
+  select:hover{
+    box-shadow: 0 0 10px #ffc0cb;
   }
   
