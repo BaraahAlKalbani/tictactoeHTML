@@ -4,7 +4,10 @@ let currentPlayer = 'X'; // a variable to keep track of the current player
 let gameover = false; // a boolean variable to keep track of whether the game is over
 let player2Bot = false;
 let selectedBotDifficulty = "easy";
-
+let isAuthenticated = false; // a variable to keep track of whether the user is authenticated
+let username = null;
+let password = null;
+let credentials ;
 const playingMode = document.getElementById('playMode');
 const vsBot = document.getElementById('bot');
 const botDifficulty = document.getElementById("botDifficulty");
@@ -25,6 +28,7 @@ botDifficulty.addEventListener("change",() =>{
   setBotAsPlayer2();
   selectedBotDifficulty = selectedBotDifficulty=== "easy" ? "hard":"easy";
   console.log(selectedBotDifficulty);
+  botDifficulty.style.display = "block";
 });
 // Function to handle cell click events
 function handleCellClick(event) {
@@ -56,7 +60,14 @@ function handleCellClick(event) {
       
       // Check if the next move is for the bot player
       if (player2Bot && currentPlayer=='O') {   
+
         setTimeout(() => {
+          if(username==null || password== null)
+          {
+            let username = "admin";
+            let password = "WbaraahW";
+           credentials = btoa(`${username}:${password}`);
+          }
           let url = `http://localhost:8080/api/bot/make-move`;
           if(selectedBotDifficulty=="hard"){
             url = `http://localhost:8080/api/bot/make-move/hard`;
@@ -65,7 +76,9 @@ function handleCellClick(event) {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Basic ${credentials}`
             },
+            
             body: JSON.stringify({
               board
             })
@@ -92,7 +105,7 @@ function handleCellClick(event) {
                 updateMessage(); 
               }
             }).catch(error => console.log(error));
-          }, 500);  
+          }, 0);  
         }
       }
     }
@@ -134,6 +147,8 @@ function updateMessage() {
 
     // Function to reset the game by clearing the board, resetting the player to 'X', and setting the gameover flag to false
     function restartGame() {
+      botDifficulty.style.display = "none";
+
     // Reset the board by setting each cell to an empty string
     board = ['', '', '', '', '', '', '', '', ''];
     // Reset the current player to 'X'
